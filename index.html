@@ -83,12 +83,12 @@ Selamat ulang tahun, sayang. Semoga hari ini penuh hal baik dan senyum yang tulu
  </section>
  <section class="card">
   <h2>Potongan cerita kita</h2>
-  <p class="center small">Pilih foto untuk pratinjau. Agar pasangan bisa melihat foto ini juga, unggah file gambar ke proyek website dan gunakan nama file pada bagian galeri di kode.</p>
+  <p class="center small">Beberapa potongan cerita kita ♡</p>
   <div class="gallery">
-   <label class="photo" for="photo1"><img id="img1" alt="" class="hidden"><span id="caption1">♡ Foto kenangan pertama<br>Ketuk untuk memilih foto</span></label>
-   <label class="photo" for="photo2"><img id="img2" alt="" class="hidden"><span id="caption2">♡ Foto kenangan kedua<br>Ketuk untuk memilih foto</span></label>
-   <label class="photo" for="photo3"><img id="img3" alt="" class="hidden"><span id="caption3">♡ Momen favorit<br>Ketuk untuk memilih foto</span></label>
-   <label class="photo" for="photo4"><img id="img4" alt="" class="hidden"><span id="caption4">♡ Senyum kesukaan<br>Ketuk untuk memilih foto</span></label>
+   <label class="photo" for="photo1"><img id="img1" alt="Kenangan kita 1" src="foto1.jpg"><span id="caption1" class="hidden">♡ Foto kenangan pertama<br>Ketuk untuk memilih foto</span></label>
+   <label class="photo" for="photo2"><img id="img2" alt="Kenangan kita 2" src="foto2.jpg"><span id="caption2" class="hidden">♡ Foto kenangan kedua<br>Ketuk untuk memilih foto</span></label>
+   <label class="photo" for="photo3"><img id="img3" alt="Kenangan kita 3" src="foto3.jpg"><span id="caption3" class="hidden">♡ Momen favorit<br>Ketuk untuk memilih foto</span></label>
+   <label class="photo" for="photo4"><img id="img4" alt="Kenangan kita 4" src="foto4.jpg"><span id="caption4" class="hidden">♡ Senyum kesukaan<br>Ketuk untuk memilih foto</span></label>
   </div>
   <input type="file" accept="image/*" id="photo1"><input type="file" accept="image/*" id="photo2"><input type="file" accept="image/*" id="photo3"><input type="file" accept="image/*" id="photo4">
  </section>
@@ -97,8 +97,8 @@ Selamat ulang tahun, sayang. Semoga hari ini penuh hal baik dan senyum yang tulu
   <div class="music-row">
    <div class="disc" id="disc">♫</div>
    <div style="flex:1">
-    <strong id="songTitle">Beautiful Girls — Sean Kingston</strong>
-    <div class="small">Pilih file lagu dari perangkat untuk memutarnya.</div>
+    <strong id="songTitle">Beautiful Girl</strong>
+    <div class="small">Lagu khusus untukmu ♡</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
      <label for="musicFile" class="btn secondary" style="cursor:pointer">Pilih file lagu ♫</label>
      <button class="btn" id="musicToggle">Putar</button>
@@ -106,8 +106,8 @@ Selamat ulang tahun, sayang. Semoga hari ini penuh hal baik dan senyum yang tulu
     <input type="file" id="musicFile" accept="audio/*">
    </div>
   </div>
-  <audio id="audio" loop></audio>
-  <p class="small">Aku tidak menyertakan file lagu berhak cipta di dalam template. Pilih file audio yang kamu miliki, atau tautkan sumber musik yang legal. Pengunjung perlu menekan tombol Putar.</p>
+  <audio id="audio" src="Beautiful Girl.mp3" loop></audio>
+  <p class="small">Tekan tombol Putar untuk mendengarkan lagu. Browser mungkin meminta kamu memulai musik dengan menekan tombol.</p>
  </section>
  <section class="card center">
   <h2>Hari spesial kita ♡</h2>
@@ -132,8 +132,8 @@ const SETTINGS = {
  partnerName: "Fira Syah Fitri",
  relationshipStart: "2026-10-24T00:00:00",
  accentColor: "#e96f9d",
- musicTitle: "Beautiful Girls — Sean Kingston",
- musicFile: ""
+ musicTitle: "Beautiful Girl",
+ musicFile: "Beautiful%20Girl.mp3"
 };
 document.documentElement.style.setProperty("--hot",SETTINGS.accentColor);
 document.title="Untuk "+SETTINGS.partnerName+" ♡";
@@ -154,7 +154,7 @@ const audio=document.getElementById("audio"),musicInput=document.getElementById(
 document.getElementById("songTitle").textContent=SETTINGS.musicTitle;
 if(SETTINGS.musicFile)audio.src=SETTINGS.musicFile;
 musicInput.addEventListener("change",()=>{const f=musicInput.files[0];if(!f)return;audio.src=URL.createObjectURL(f);document.getElementById("songTitle").textContent=f.name;audio.play().then(()=>{musicToggle.textContent="Jeda";disc.classList.add("playing")}).catch(()=>{})});
-musicToggle.addEventListener("click",async()=>{if(!audio.src){alert("Pilih file lagu terlebih dahulu. Untuk memutar Beautiful Girls, pilih file audio yang kamu miliki.");return}
+musicToggle.addEventListener("click",async()=>{if(!audio.src){alert("File lagu belum tersedia. Pastikan Beautiful Girl.mp3 ikut diunggah ke GitHub.");return}
  if(audio.paused){try{await audio.play();musicToggle.textContent="Jeda";disc.classList.add("playing")}catch(e){alert("Musik belum bisa diputar. Coba pilih file audio lain.")}}
  else{audio.pause();musicToggle.textContent="Putar";disc.classList.remove("playing")}});
 function updateCounter(){const start=new Date(SETTINGS.relationshipStart);let diff=Date.now()-start.getTime();if(diff<0)diff=0;
